@@ -7,15 +7,28 @@ import React from 'react'
 export default async function page({params}) {
 
 
-    let variable_category={
-        "categoryGroupId": 1,
+    // let variable_category={
+    //     "categoryGroupId": 1,
+    //     "limit":50,
+    //     "offset":0
+    //   }
+      let variable_category={
+    
+        "commonFilter": {
         "limit":50,
-        "offset":0
+        "offset":0},
+        "categoryFilter": {"hierarchyLevel": 1}
       }
       
-    let variable_slug={ "limit": 10, "offset": 0,"slug": params?.slug}
+    // let variable_slug={ "limit": 10, "offset": 0,"slug": params?.slug}
 
-    
+    let variable_slug={"slug": params?.slug, "AdditionalData": {
+      "authorDetails": true,
+      "memberProfile": false,
+      "additionalFields": false,
+      "categories": false
+    }}
+
       const [CategoryList,detailData]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug)])
 
     if (!detailData) {

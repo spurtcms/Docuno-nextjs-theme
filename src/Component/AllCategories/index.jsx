@@ -2,6 +2,7 @@
 import { setRouter } from '@/app/api/serverAction';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import NodataImg from '../NodataImg';
 
 export default function AllCategories({CategoryList,CategoryEntries,params}) {
 
@@ -9,10 +10,6 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
   const [categoryList,setCategoryList]=useState()
   const [categoryEntries,setCategoryEntries]=useState(CategoryEntries)
 
-
-
-  // categoryList?.categoriesList?.categories.filter(d=>d?.categorySlug==params)
-  // console.log(categoryList?.categoriesList?.categories.filter(d=>d.categorySlug==params),'asdaswwwww');
 
   useEffect(()=>{
 
@@ -33,11 +30,10 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
   // })
   window.scrollTo(0, 0);
 
-  const filteredData =CategoryList?.categoriesList?.categories && CategoryList?.categoriesList?.categories
-  .filter(d => d?.categorySlug === params)
-  .map(data => {
-    const matchingEntries = categoryEntries?.channelEntriesList?.channelEntriesList
-      .filter(res => res?.categories.some(val => val.some(s => s?.categorySlug === data?.categorySlug)));
+  const filteredData =CategoryList?.CategoryList?.categorylist && CategoryList?.CategoryList?.categorylist
+  .filter(d => d?.categorySlug === params).map(data => {
+    const matchingEntries = categoryEntries?.ChannelEntriesList?.channelEntriesList
+      .filter(res => res?.categories?.some(val => val?.some(s => s?.categorySlug === data?.categorySlug)));
     return { ...data, filterData: matchingEntries };
   });
 
@@ -45,7 +41,7 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
     setCategoryList(filteredData)
   }
   else(
-    setCategoryList(CategoryList?.categoriesList?.categories)
+    setCategoryList(CategoryList?.CategoryList?.categorylist)
   )
   },[])
 
@@ -59,7 +55,6 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
   // categoryList&&categoryList.map((d)=>{
   //   d.filterData=datsss
   // })
-  // console.log(categoryList,'datsss');
 
   const handleRoute=(slug)=>{
     setRouter(slug)
@@ -78,16 +73,25 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
             {categoryList?.length>0 && categoryList?.map((response,index)=>(
 
               <>
+              {response?.filterData.length !== 0 ? 
+              <>
               {response?.filterData.map((result)=>(
                 <>
                 <div className="pb-6 flex justify-between items-center group border-b border-gray-100 mb-6">
                   <Link href={`/categoriesDetails/${result?.slug}`} onClick={()=>handleRoute(response?.categorySlug)} className="text-black font-medium text-lg group-hover:text-blue-600">
                     {result?.title}
                   </Link>
+                  <Link href={`/categoriesDetails/${result?.slug}`}>
                   <img src="/img/right-arrow-black.svg" />
+                  </Link>
                 </div>
                 </>
                 ))}
+              </>:
+               <>
+               <NodataImg />
+               </>
+              }
                 </>
               ))}
           </div>
@@ -96,3 +100,6 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
     </>
   )
 }
+
+
+           

@@ -36,16 +36,13 @@ export default function FilterJob({ categoryList }) {
 
 
   
-  // console.log(,'asdadsdads2222');
   // const handleKeyDown=(event)=>{
   //   let searchDataArr=searchData && searchData.map((resData)=>resData?.filterData)
     
 
   //   if (event.key === 'ArrowDown') {
-  //     console.log(focusedIndex,'asdasdsd');
-  //     console.log(searchData,'searchData');
+
   //    if(focusedIndex >= -1 && focusedIndex < searchDataArr.flat()?.length){
-  //     console.log("12213132221");
   //     setFocusedIndex(focusedIndex + 1);
   //     outerScrollRef.current.scrollTop = 0;
   //     const element = document.getElementById(focusedIndex +1);

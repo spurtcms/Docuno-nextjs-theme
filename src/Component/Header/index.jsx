@@ -15,26 +15,29 @@ export default function Header() {
 
 
   const IntialData = async () => {
-    let variable_category = {
-      "categoryGroupId": 1,
-      "limit": 50,
-      "offset": 0
+    // let variable_category = {
+    //   "categoryGroupId": 1,
+    //   "limit": 50,
+    //   "offset": 0
+    // }
+ 
+    let variable_category={
+    
+      "commonFilter": {
+      "limit":50,
+      "offset":0},
+      "categoryFilter": {"hierarchyLevel": 1}
     }
-    let variable_list = {
-      "limit": 10, "offset": 0, "req": {
-        "authorDetails": true, "categories": true
-      }, "categoryId": 1
-    }
+   let  variable_list={ "commonFilter": {"limit": 10, "offset": 0},"additionalData": {
+      "authorDetails": true},}
+  
+    const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
 
-    const [CategoryList, CategoryEntries] = await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY, variable_category), fetchGraphQl(GET_POSTS_LIST_QUERY, variable_list)])
-
-
-
-    let FindData = CategoryList?.categoriesList?.categories && CategoryList?.categoriesList?.categories.map((data) => {
+    let FindData = CategoryList?.CategoryList?.categorylist && CategoryList?.CategoryList?.categorylist.map((data) => {
       let Arr = []
-      CategoryEntries?.channelEntriesList?.channelEntriesList.map((res) => {
-
-        if ((res?.categoriesId).includes(data?.id.toString())) {
+      CategoryEntries?.ChannelEntriesList?.channelEntriesList.map((res) => {
+        let dd =res?.categoriesId.split(",")
+        if (dd.includes(data?.id.toString())) {
           Arr.push(res)
         }
       })
@@ -47,7 +50,7 @@ export default function Header() {
       setCategoryList(FindData)
     }
     else {
-      setCategoryList(CategoryList?.categoriesList?.categories)
+      setCategoryList(CategoryList?.CategoryList?.categorylist)
     }
   }
 
@@ -58,7 +61,6 @@ export default function Header() {
 
 
   const searchApiCall = () => {
-
     let valuesFilter = categoryList && categoryList.length > 0
       ? categoryList.filter(d =>
         d.categoryName.toLowerCase().includes(change.toLowerCase()) ||

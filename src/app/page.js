@@ -5,12 +5,14 @@ import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from "./api/query"
 export default async function page() {
 
   let variable_category={
-    "categoryGroupId": 1,
+    
+    "commonFilter": {
     "limit":50,
-    "offset":0
+    "offset":0},
+    "categoryFilter": {"hierarchyLevel": 1}
   }
- let  variable_list={ "limit": 10, "offset": 0,"req": {
-    "authorDetails": true},"categoryId":1}
+ let  variable_list={ "commonFilter": {"limit": 10, "offset": 0},"additionalData": {
+    "authorDetails": true},}
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
   return (

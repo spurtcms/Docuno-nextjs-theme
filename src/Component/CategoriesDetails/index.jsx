@@ -9,6 +9,7 @@ import { getRouter } from '@/app/api/serverAction';
 
 export default function CategoriesDetails({detailData,CategoryList,params}) {
 
+
     const [loader,setLoader]=useState(true)
     const [routeShow,setRouteShow]=useState("")
 
@@ -22,7 +23,6 @@ export default function CategoriesDetails({detailData,CategoryList,params}) {
 //     let variable_slug={ "limit": 10, "offset": 0,"slug": params}
 
 //       const [CategoryList,detailData]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug)])
-//       console.log(CategoryList,'23123123123231',detailData);
 //     }
 
 useEffect(()=>{
@@ -38,9 +38,8 @@ useEffect(()=>{
 },[])
 
 
-    // console.log(detailData?.channelEntryDetail?.categoriesId,'detailData',CategoryList);
 
-    const CategorieFilter=CategoryList?.categoriesList?.categories.filter(d=>(detailData?.channelEntryDetail?.categoriesId.toString().includes(d?.id.toString()) && (d?.categorySlug == routeShow && routeShow)))
+    const CategorieFilter=CategoryList?.CategoryList?.categorylist.filter(d=>(detailData?.ChannelEntryDetail?.categoriesId.toString().includes(d?.id.toString()) && (d?.categorySlug == routeShow && routeShow)))
 
     // (detailData?.channelEntryDetail?.categoriesId.toString()).includes(d?.id.toString())
 
@@ -58,7 +57,7 @@ useEffect(()=>{
                         </>}
                         <img src="/img/right-arrow.svg" className="w-2 h-2" />
                         {loader == false?
-                        <Link href="javascript:void(0)" className="text-sm font-semibold text-black line-clamp-1">{routeShow && detailData?.channelEntryDetail?.title}</Link>
+                        <Link href="javascript:void(0)" className="text-sm font-semibold text-black line-clamp-1">{routeShow && detailData?.ChannelEntryDetail?.title}</Link>
                         :
                         <>
                         <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 shadow animate-pulse"></div>
@@ -67,17 +66,17 @@ useEffect(()=>{
                     {loader?<><DetailPageSkeleton /></>
                     :<>
                     <div className="flex flex-col gap-6 mb-10">
-                        <h2 className="text-[40px] font-semibold text-black">{detailData?.channelEntryDetail?.title}</h2>
+                        <h2 className="text-[40px] font-semibold text-black">{detailData?.ChannelEntryDetail?.title}</h2>
                         {/* <p className="text-gray-300 text-lg font-normal">
                             Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time.
                         </p> */}
                     </div>
                     <div className="mb-10">
-                        <img src={`${imageUrl}${detailData?.channelEntryDetail?.coverImage}`} className="w-full h-auto" />
+                        {/* <img src={`${imageUrl}${detailData?.ChannelEntryDetail?.coverImage}`} className="w-full h-auto" /> */}
                     </div>
                     <div className="flex flex-col gap-6 mb-6">
                         {/* <h2 className="text-2xl font-semibold text-black">How To Add Images/Videos To The KnowledgeBase Article</h2> */}
-                        <div className="text-gray-300 text-lg font-normal desc" dangerouslySetInnerHTML={{__html: detailData?.channelEntryDetail?.description.replaceAll("<br>"," "),}}/>
+                        <div className="text-gray-300 text-lg font-normal desc" dangerouslySetInnerHTML={{__html: detailData?.ChannelEntryDetail?.description.replaceAll("<br>"," "),}}/>
                         {/* <p className="text-gray-300 text-lg font-normal">
                             Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time.
                         </p> */}

@@ -8,21 +8,21 @@ import { setRouter } from '@/app/api/serverAction'
 
 export default function HomepageList({CategoryList,CategoryEntries}) {
 
+
   const [categoryList,setCategoryList]=useState()
   const [categoryEntries,setCategoryEntries]=useState(CategoryEntries)
   const [loader,setLoader]=useState(true)
-
 
 
 useEffect(()=>{
   
   window.scrollTo(0, 0);
 
-  let FindData=CategoryList?.categoriesList?.categories && CategoryList?.categoriesList?.categories.map((data)=>{
+  let FindData=CategoryList?.CategoryList?.categorylist && CategoryList?.CategoryList?.categorylist.map((data)=>{
     let Arr=[]
-    categoryEntries?.channelEntriesList?.channelEntriesList.map((res)=>{
-      
-      if((res?.categoriesId).includes(data?.id.toString())){
+    categoryEntries?.ChannelEntriesList?.channelEntriesList.map((res)=>{
+      let dd = res?.categoriesId.split(',')
+      if(dd.includes(data?.id.toString())){
         Arr.push(res)
       }
     })
@@ -30,13 +30,12 @@ useEffect(()=>{
 
     return data
   })
-
   if(FindData){
     setCategoryList(FindData)
     setLoader(false)
   }
   else{
-    setCategoryList(CategoryList?.categoriesList?.categories)
+    setCategoryList(CategoryList?.CategoryList?.categorylist)
     setLoader(false)
   }
   },[])
@@ -45,7 +44,6 @@ useEffect(()=>{
   const handleRoute=(slug)=>{
     setRouter(slug)
   }
-
 
   return (
     <>

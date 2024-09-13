@@ -6,19 +6,28 @@ import React from 'react'
 
 
 
-export default async function page({params,request:NextApiRequest}) {
+export default async function page({params}) {
 
 
+  // let variable_category={
+  //   "categoryGroupId": 1,
+  //   "limit":50,
+  //   "offset":0
+  // }
   let variable_category={
-    "categoryGroupId": 1,
+    
+    "commonFilter": {
     "limit":50,
-    "offset":0
+    "offset":0},
+    "categoryFilter": {"hierarchyLevel": 1}
   }
- let  variable_list={ "limit": 10, "offset": 0,"req": {"authorDetails": true,"categories": true},"categoryId":1}
+//  let  variable_list={ "limit": 10, "offset": 0,"req": {"authorDetails": true,"categories": true},"categoryId":1}
+ let  variable_list={ "commonFilter": {"limit": 10, "offset": 0},"additionalData": {
+  "authorDetails": true,"categories": true},}
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
 
-  const filteredData = CategoryList?.categoriesList?.categories.filter(d => d?.categorySlug === params?.slug)
+  const filteredData = CategoryList?.CategoryList?.categorylist.filter(d => d?.categorySlug === params?.slug)
 
   if (filteredData?.length==0) {
     return PageNotFound();

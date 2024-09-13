@@ -1,137 +1,181 @@
 
-export const GET_POSTS_LIST_QUERY = `query channelEntryList($limit: Int!
-  $offset: Int!,$req:RequireData,$tit:String,$categoryId: Int){
-    channelEntriesList(limit:$limit,offset:$offset,requireData:$req,title:$tit,
-      categoryId:$categoryId){
-      channelEntriesList{
-        id
-        title
-        slug
-        description
-        userId
-        channelId
-        status
-        isActive
-        createdOn
-        createdBy
-        modifiedBy
-        modifiedOn
-        coverImage
-        thumbnailImage
-        metaTitle
-        metaDescription
-        keyword
-        categoriesId
-        relatedArticles
-        featuredEntry
-        viewCount
-        categories{
+export const GET_POSTS_LIST_QUERY = `query ChannelEntriesListNew($commonFilter:Filter,$sort:Sort,
+  $entryFilter:EntriesFilter,
+    $additionalData:EntriesAdditionalData){
+      ChannelEntriesList(commonFilter:$commonFilter,sort:$sort,
+      entryFilter:$entryFilter,AdditionalData:$additionalData){
+        channelEntriesList{
           id
-          categoryName
-          categorySlug
+          title
+          slug
           description
-          imagePath
+          userId
+          channelId
+          status
+          isActive
           createdOn
           createdBy
           modifiedOn
           modifiedBy
-          parentId
-        }
-        additionalFields{
-          sections{
-            sectionId
-            sectionName
-            sectionTypeId
-            createdOn
-            createdBy
-            modifiedOn
-            modifiedBY
-            orderIndex
-          }
-          fields{
-            fieldId
-            fieldName
-            fieldTypeId
-            mandatoryField
-            optionExist
-            createdOn
-            createdBy
-            modifiedOn
-            modifiedBY
-            fieldDesc
-            orderIndex
+          coverImage
+          thumbnailImage
+          metaTitle
+          metaDescription
+          keyword
+          categoriesId
+          relatedArticles
+          featuredEntry
+          viewCount
+          author
+          sortOrder
+          createTime
+          readingTime
+          publishedTime
+          tags
+          excerpt
+          imageAltTag
+          categories{
+            id
+            categoryName
+            categorySlug
+            description
             imagePath
-            datetimeFormat
-            timeFormat
-            sectionParentId
-            characterAllowed
-            fieldTypeName
+            createdOn
+            createdBy
+            modifiedOn
+            modifiedBy
+            parentId
+            tenantId
           }
-        }
-        authorDetails{
-          AuthorId
-          FirstName
-          LastName
-        }
-        memberProfile{
-          id
-      memberId
-      profileName
-      profileSlug
-      profilePage
-      memberDetails
-      companyName
-      companyLocation
-      companyLogo
-      about
-      seoTitle
-      seoKeyword
-      seoDescription
-      linkedin
-      website
-      twitter
-      createdBy
-      createdOn
-      modifiedOn
-      modifiedBy
-      claimStatus
-      storageType
-          
-        }
-      }
-      count
-    }
-  }
-`;
-
-  export const GET_POSTS_CATEGORYLIST_QUERY = `query categoryList($limit: Int
-    $offset: Int $categoryGroupId: Int $categoryGroupSlug: String
-    $hierarchyLevel: Int $checkEntriesPresence: Int ){
-      categoriesList(limit:$limit,offset:$offset,
-        categoryGroupId:$categoryGroupId,
-        categoryGroupSlug:$categoryGroupSlug, 
-        hierarchyLevel:$hierarchyLevel,
-        checkEntriesPresence:$checkEntriesPresence){
-        categories{
-          id
-          categoryName
-          categorySlug
-          description
-          imagePath
-          createdOn
-          createdBy
-          modifiedOn
-          modifiedBy
-          parentId
+          additionalFields{
+            sections{
+              id
+              sectionName
+              sectionTypeId
+              createdOn
+              createdBy
+              modifiedOn
+              modifiedBY
+              orderIndex
+              tenantId  
+            }
+            fields{
+              id
+              fieldName
+              fieldTypeId
+              mandatoryField
+              optionExist
+              createdOn
+              createdBy
+              modifiedOn
+              modifiedBY
+              fieldDesc
+              orderIndex
+              imagePath
+              datetimeFormat
+              timeFormat
+              sectionParentId
+              characterAllowed
+              fieldTypeName
+              fieldValue{
+                id
+                fieldValue
+                createdOn
+                createdBy
+                modifiedOn
+                modifiedBY
+                tenantId 
+              }
+              fieldOptions{
+                id
+                optionName
+                optionValue
+                createdOn
+                createdBy
+                modifiedOn
+                modifiedBY
+                tenantId
+              }
+              tenantId
+              
+            }
+            
+          }
+          authorDetails{
+            id
+            firstName
+            lastName
+            email
+            mobileNo
+            isActive
+            profileImagePath
+            createdOn
+            createdBy
+            modifiedOn
+            modifiedBy
+            tenantId
+          }
+          memberProfile{
+            id
+            memberId
+            profileName
+            profileSlug
+            profilePage
+            memberDetails
+            companyName
+            companyLocation
+            companyLogo
+            about
+            seoTitle
+            seoDescription
+            seoKeyword
+            linkedin
+            twitter
+            website
+            createdBy
+            createdOn
+            modifiedOn
+            modifiedBy
+            claimStatus
+            IsActive
+            tenantId
+            claimDate
+          }
+          tenantId
         }
         count
       }
     }
+`;
+
+  export const GET_POSTS_CATEGORYLIST_QUERY = `query CategoryList($categoryFilter:CategoryFilter,
+    $commonFilter: Filter) {
+      CategoryList(categoryFilter:$categoryFilter,
+        commonFilter:$commonFilter){
+      categorylist{
+        id
+        categoryName
+        categorySlug
+        description
+        imagePath
+        createdOn
+        createdBy
+        modifiedOn
+        modifiedBy
+        parentId
+        tenantId
+      },
+      count
+    }
+    
+  }
   `;
 
   
-export const GET_POSTS_SLUG_QUERY = `query($slug: String!){
-    channelEntryDetail(slug:$slug){
+export const GET_POSTS_SLUG_QUERY = `query entryDetail($id:Int,$slug:String,
+  $AdditionalData:EntriesAdditionalData){
+    ChannelEntryDetail(id:$id,slug:$slug,
+      AdditionalData:$AdditionalData){
         id
         title
         slug
@@ -144,13 +188,167 @@ export const GET_POSTS_SLUG_QUERY = `query($slug: String!){
         createdOn
         categoriesId
         authorDetails{
-          FirstName
-          LastName
-          Email
-          MobileNo
-          ProfileImagePath
+          id
+          firstName
+          lastName
+          email
+          mobileNo
+          isActive
+          profileImagePath
+          #createdOn
+          createdBy
+          modifiedOn
+          modifiedBy
+          tenantId
         }
       }
     }
 
   `
+
+  // query entryDetail($id:Int,$slug:String,
+  //   $AdditionalData:EntriesAdditionalData){
+  //     ChannelEntryDetail(id:$id,slug:$slug,
+  //       AdditionalData:$AdditionalData){
+  //        id
+  //         title
+  //         slug
+  //         description
+  //         userId
+  //         channelId
+  //         status
+  //         isActive
+  //         createdOn
+  //         createdBy
+  //         modifiedOn
+  //         modifiedBy
+  //         coverImage
+  //         thumbnailImage
+  //         metaTitle
+  //         metaDescription
+  //         keyword
+  //         categoriesId
+  //         relatedArticles
+  //         featuredEntry
+  //         viewCount
+  //         author
+  //         sortOrder
+  //         createTime
+  //         readingTime
+  //         publishedTime
+  //         tags
+  //         excerpt
+  //         imageAltTag
+  //         categories{
+  //           id
+  //           categoryName
+  //           categorySlug
+  //           description
+  //           imagePath
+  //           createdOn
+  //           createdBy
+  //           modifiedOn
+  //           modifiedBy
+  //           parentId
+  //           tenantId
+  //         }
+  //         additionalFields{
+  //           sections{
+  //             id
+  //             sectionName
+  //             sectionTypeId
+  //             createdOn
+  //             createdBy
+  //             modifiedOn
+  //             modifiedBY
+  //             orderIndex
+  //             tenantId  
+  //           }
+  //           fields{
+  //             id
+  //             fieldName
+  //             fieldTypeId
+  //             mandatoryField
+  //             optionExist
+  //             createdOn
+  //             createdBy
+  //             modifiedOn
+  //             modifiedBY
+  //             fieldDesc
+  //             orderIndex
+  //             imagePath
+  //             datetimeFormat
+  //             timeFormat
+  //             sectionParentId
+  //             characterAllowed
+  //             fieldTypeName
+  //             fieldValue{
+  //               id
+  //               fieldValue
+  //               createdOn
+  //               createdBy
+  //               modifiedOn
+  //               modifiedBY
+  //               tenantId 
+  //             }
+  //             fieldOptions{
+  //               id
+  //               optionName
+  //               optionValue
+  //               createdOn
+  //               createdBy
+  //               modifiedOn
+  //               modifiedBY
+  //               tenantId
+  //             }
+  //             tenantId
+              
+  //           }
+            
+  //         }
+  //         authorDetails{
+  //           id
+  //           firstName
+  //           lastName
+  //           email
+  //           mobileNo
+  //           isActive
+  //           profileImagePath
+  //           createdOn
+  //           createdBy
+  //           modifiedOn
+  //           modifiedBy
+  //           tenantId
+  //         }
+  //         memberProfile{
+  //           id
+  //           memberId
+  //           profileName
+  //           profileSlug
+  //           profilePage
+  //           memberDetails
+  //           companyName
+  //           companyLocation
+  //           companyLogo
+  //           about
+  //           seoTitle
+  //           seoDescription
+  //           seoKeyword
+  //           linkedin
+  //           twitter
+  //           website
+  //           createdBy
+  //           createdOn
+  //           modifiedOn
+  //           modifiedBy
+  //           claimStatus
+  //           IsActive
+  //           tenantId
+  //           claimDate
+  //         }
+  //         tenantId
+  //       }
+      
+  //     }
+    
+  
