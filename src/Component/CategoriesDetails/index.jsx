@@ -43,7 +43,7 @@ useEffect(()=>{
 
     // (detailData?.channelEntryDetail?.categoriesId.toString()).includes(d?.id.toString())
 
-
+    
   return (
     <>
     <main className="min-h-screen bg-white">
@@ -76,7 +76,16 @@ useEffect(()=>{
                     </div>
                     <div className="flex flex-col gap-6 mb-6">
                         {/* <h2 className="text-2xl font-semibold text-black">How To Add Images/Videos To The KnowledgeBase Article</h2> */}
-                        <div className="text-gray-300 text-lg font-normal desc" dangerouslySetInnerHTML={{__html: detailData?.ChannelEntryDetail?.description.replaceAll("<br>"," "),}}/>
+                        
+                         {detailData?.ChannelEntryDetail?.contentChunk?.data?.length !=0 &&
+
+                          detailData?.ChannelEntryDetail?.contentChunk?.data.map((res)=>(
+                            <>
+                            <div className="text-gray-300 text-lg font-normal desc" dangerouslySetInnerHTML={{__html: res.replaceAll("<br>"," "),}}/>
+                            </>
+                          ))
+                         
+                         }
                         {/* <p className="text-gray-300 text-lg font-normal">
                             Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time.
                         </p> */}
