@@ -179,7 +179,7 @@ export const GET_POSTS_SLUG_QUERY = `query entryDetail($id:Int,$slug:String,
         id
         title
         slug
-        #description
+        description
         userId
         channelId
         status
@@ -187,10 +187,10 @@ export const GET_POSTS_SLUG_QUERY = `query entryDetail($id:Int,$slug:String,
         coverImage
         createdOn
         categoriesId
-        contentChunk{
-          data
-          length
-        }
+        #contentChunk{
+          #data
+          #length
+        #}
         authorDetails{
           id
           firstName

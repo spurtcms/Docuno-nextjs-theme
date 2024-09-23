@@ -1,9 +1,6 @@
 "use client"
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { imageUrl } from '../Utilities/ImageUrl';
-import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_SLUG_QUERY } from '@/app/api/query';
-import { fetchGraphQl } from '@/app/api/graphicql';
 import DetailPageSkeleton from '../SkeletonLoader/DetailPageSkeleton';
 import { getRouter } from '@/app/api/serverAction';
 
@@ -12,6 +9,8 @@ export default function CategoriesDetails({detailData,CategoryList,params}) {
 
     const [loader,setLoader]=useState(true)
     const [routeShow,setRouteShow]=useState("")
+
+
 
 // const testCallApi=async()=>{
 //     let variable_category={
@@ -40,8 +39,6 @@ useEffect(()=>{
 
 
     const CategorieFilter=CategoryList?.CategoryList?.categorylist.filter(d=>(detailData?.ChannelEntryDetail?.categoriesId.toString().includes(d?.id.toString()) && (d?.categorySlug == routeShow && routeShow)))
-
-    // (detailData?.channelEntryDetail?.categoriesId.toString()).includes(d?.id.toString())
 
     
   return (
@@ -77,7 +74,7 @@ useEffect(()=>{
                     <div className="flex flex-col gap-6 mb-6">
                         {/* <h2 className="text-2xl font-semibold text-black">How To Add Images/Videos To The KnowledgeBase Article</h2> */}
                         
-                         {detailData?.ChannelEntryDetail?.contentChunk?.data?.length !=0 &&
+                         {/* {detailData?.ChannelEntryDetail?.contentChunk?.data?.length !=0 &&
 
                           detailData?.ChannelEntryDetail?.contentChunk?.data.map((res)=>(
                             <>
@@ -85,10 +82,9 @@ useEffect(()=>{
                             </>
                           ))
                          
-                         }
-                        {/* <p className="text-gray-300 text-lg font-normal">
-                            Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time.
-                        </p> */}
+                         } */}
+
+                    <div className="text-gray-300 text-lg font-normal desc" dangerouslySetInnerHTML={{__html: detailData?.ChannelEntryDetail?.description.replaceAll("<br>"," "),}}/>
                     </div>
                     </>}
                     <div className="mt-[60px] py-[60px] bg-gray-200 flex justify-center items-center">
