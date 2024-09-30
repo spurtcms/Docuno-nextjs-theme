@@ -17,7 +17,11 @@ export default async function page({params}) {
         "commonFilter": {
         "limit":50,
         "offset":0},
-        "categoryFilter": {"hierarchyLevel": 1}
+        "categoryFilter": {
+          "hierarchyLevel": 2,
+          "categoryGroupSlug": "knowledge-base",
+          "excludeGroup": true,
+        }
       }
       
     // let variable_slug={ "limit": 10, "offset": 0,"slug": params?.slug}

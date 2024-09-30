@@ -9,7 +9,11 @@ export default async function page() {
     "commonFilter": {
     "limit":50,
     "offset":0},
-    "categoryFilter": {"hierarchyLevel": 1}
+    "categoryFilter": {
+      "hierarchyLevel": 2,
+      "categoryGroupSlug": "knowledge-base",
+      "excludeGroup": true,
+    }
   }
  let  variable_list={ "commonFilter": {"limit": 10, "offset": 0},"additionalData": {
     "authorDetails": true},}
