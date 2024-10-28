@@ -1,3 +1,4 @@
+
 import HomepageList from "@/Component/HomePage/HomePageList";
 import { fetchGraphQl } from "./api/graphicql";
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from "./api/query";

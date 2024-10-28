@@ -112,20 +112,6 @@ export default function FilterJob({ categoryList }) {
               </div>
             }
           </div>
-          {/* <div className="overflow-auto max-h-56 border-t border-slate-200" >
-                          
-                          <>
-                          <Link href={`/product-detail`} prefetch={true} className={`flex gap-3 items-center p-2 border-b border-slate-200 h-14 'bg-gray-200' }`}   >
-                            <div className="w-10 min-h-10 flex items-center" ></div>
-                            <p className="text-sm font-normal text-black cursor-pointer" prefetch>sasdasdsad</p>
-                          </Link>
-                          </>:
-                          <>
-                          <div className="p-4 flex items-center justify-center">
-                            <p className="text-sm font-medium text-black" >{"No data found"}</p>
-                          </div>
-                          </>
-                        </div> */}
         </div>
       </div>
     </>
