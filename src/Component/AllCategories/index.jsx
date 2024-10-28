@@ -7,6 +7,7 @@ import NodataImg from '../NodataImg';
 export default function AllCategories({CategoryList,CategoryEntries,params}) {
 
 
+
   const [categoryList,setCategoryList]=useState()
   const [categoryEntries,setCategoryEntries]=useState(CategoryEntries)
 
@@ -29,6 +30,7 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
   //   data.filterData=Arr
   // })
   window.scrollTo(0, 0);
+
 
   const filteredData =CategoryList?.CategoryList?.categorylist && CategoryList?.CategoryList?.categorylist
   .filter(d => d?.categorySlug === params).map(data => {
@@ -59,6 +61,7 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
   const handleRoute=(slug)=>{
     setRouter(slug)
   }
+
   return (
     <>
     <main className="min-h-screen bg-white">
@@ -70,7 +73,7 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
           </div>
           <div>
             <h3 className="font-semibold text-[32px] mb-8">{categoryList && categoryList?.[0]?.categoryName}</h3>
-            {categoryList?.length>0 && categoryList?.map((response,index)=>(
+            {categoryList && categoryList?.map((response,index)=>(
 
               <>
               {response?.filterData.length !== 0 ? 

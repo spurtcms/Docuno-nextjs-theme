@@ -18,7 +18,7 @@ export default async function page({params}) {
         "limit":50,
         "offset":0},
         "categoryFilter": {
-          "hierarchyLevel": 2,
+          // "hierarchyLevel": 2,
           "categoryGroupSlug": "knowledge-base",
           "excludeGroup": true,
         }
@@ -26,7 +26,8 @@ export default async function page({params}) {
       
     // let variable_slug={ "limit": 10, "offset": 0,"slug": params?.slug}
 
-    let variable_slug={"slug": params?.slug, "AdditionalData": {
+    let variable_slug={"slug": params?.slug, 
+    "AdditionalData": {
       "authorDetails": true,
       "memberProfile": false,
       "additionalFields": false,

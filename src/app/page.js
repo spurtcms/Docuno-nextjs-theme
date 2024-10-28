@@ -10,13 +10,20 @@ export default async function page() {
     "limit":50,
     "offset":0},
     "categoryFilter": {
-      "hierarchyLevel": 2,
+      // "hierarchyLevel": 2,
       "categoryGroupSlug": "knowledge-base",
       "excludeGroup": true,
     }
   }
- let  variable_list={ "commonFilter": {"limit": 10, "offset": 0},"additionalData": {
-    "authorDetails": true},}
+ let  variable_list={ 
+     "commonFilter": { "offset": 0},
+     "AdditionalData": {
+    "authorDetails": true,
+    "categories": true
+     },
+    "entryFilter": {
+      "categorySlug": "knowledge-base",
+    },}
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
   return (
