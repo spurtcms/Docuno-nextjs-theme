@@ -2,6 +2,7 @@
 import HomepageList from "@/Component/HomePage/HomePageList";
 import { fetchGraphQl } from "./api/graphicql";
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from "./api/query";
+import { defaultCategorySlug } from "./api/url";
 
 export default async function page() {
 
@@ -12,7 +13,7 @@ export default async function page() {
     "offset":0},
     "categoryFilter": {
       // "hierarchyLevel": 2,
-      "categoryGroupSlug": "knowledge-base",
+      "categoryGroupSlug": defaultCategorySlug,
       "excludeGroup": true,
     }
   }
@@ -23,7 +24,7 @@ export default async function page() {
     "categories": true
      },
     "entryFilter": {
-      "categorySlug": "knowledge-base",
+      "categorySlug": defaultCategorySlug,
     },}
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])

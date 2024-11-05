@@ -1,6 +1,7 @@
 import AllCategories from '@/Component/AllCategories'
 import { fetchGraphQl } from '@/app/api/graphicql'
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from '@/app/api/query'
+import { defaultCategorySlug } from '@/app/api/url'
 import PageNotFound from '@/app/not-found'
 import React from 'react'
 
@@ -21,7 +22,7 @@ export default async function page({params}) {
     "offset":0},
     "categoryFilter": {
       // "hierarchyLevel": 2,
-      "categoryGroupSlug": "knowledge-base",
+      "categoryGroupSlug": defaultCategorySlug,
       "excludeGroup": true,
   }
   }
@@ -33,7 +34,7 @@ let  variable_list={
  "categories": true
   },
  "entryFilter": {
-   "categorySlug": "knowledge-base",
+   "categorySlug": defaultCategorySlug,
  },}
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])

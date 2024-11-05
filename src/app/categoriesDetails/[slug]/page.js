@@ -1,6 +1,7 @@
 import CategoriesDetails from '@/Component/CategoriesDetails'
 import { fetchGraphQl } from '@/app/api/graphicql';
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_SLUG_QUERY } from '@/app/api/query';
+import { defaultCategorySlug } from '@/app/api/url';
 import PageNotFound from '@/app/not-found';
 import React from 'react'
 
@@ -19,7 +20,7 @@ export default async function page({params}) {
         "offset":0},
         "categoryFilter": {
           // "hierarchyLevel": 2,
-          "categoryGroupSlug": "knowledge-base",
+          "categoryGroupSlug": defaultCategorySlug,
           "excludeGroup": true,
         }
       }

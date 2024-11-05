@@ -2,6 +2,7 @@
 
 import { fetchGraphQl } from "@/app/api/graphicql"
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from "@/app/api/query"
+import { defaultCategorySlug } from "@/app/api/url"
 
 
 export const CategoryListApi = async ()=>{
@@ -13,7 +14,7 @@ export const CategoryListApi = async ()=>{
          },
         "categoryFilter": {
           // "hierarchyLevel": 2,
-          "categoryGroupSlug": "knowledge-base",
+          "categoryGroupSlug": defaultCategorySlug,
           "excludeGroup": true,}
       }
       let cateData = await fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category)
@@ -28,7 +29,7 @@ export const CategoryEntriesApi = async ()=>{
         "authorDetails": true,
         "categories": true},
         "entryFilter": {
-         "categorySlug": "knowledge-base",
+         "categorySlug": defaultCategorySlug,
         },}
 
         let cateEntriesData = await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
