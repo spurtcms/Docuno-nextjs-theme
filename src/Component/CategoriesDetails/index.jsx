@@ -6,11 +6,12 @@ import { getRouter } from '@/app/api/serverAction';
 
 export default function CategoriesDetails({detailData,CategoryList,params}) {
 
-
+    console.log(CategoryList,"CategorieFilter101789");
+    
     const [loader,setLoader]=useState(true)
     const [routeShow,setRouteShow]=useState("")
 
-
+    console.log(routeShow,"routeShowwww");
 
 // const testCallApi=async()=>{
 //     let variable_category={
@@ -37,9 +38,13 @@ useEffect(()=>{
 },[])
 
 
+console.log(detailData,"detailData");
 
-    const CategorieFilter=CategoryList?.CategoryList?.categorylist.filter(d=>(detailData?.ChannelEntryDetail?.categoriesId.toString().includes(d?.id.toString()) && (d?.categorySlug == routeShow && routeShow)))
+    const CategorieFilter=CategoryList?.CategoryList?.categorylist?.filter(d=>(detailData?.ChannelEntryDetail?.categoriesId.toString().includes(d?.id.toString()) && (d?.categorySlug == routeShow && routeShow)))
 
+
+    console.log(CategorieFilter,"CategorieFilter101");
+    console.log(detailData?.ChannelEntryDetail?.categoriesId,"detailDataqqq",CategoryList,routeShow)
     
   return (
     <>
@@ -49,7 +54,8 @@ useEffect(()=>{
                         <Link href="/" className="text-sm font-medium text-grey-600">Home</Link>
                         <img src="/img/right-arrow.svg" className="w-2 h-2" />
                         {loader == false?
-                        <Link href={`/allCategories/${CategorieFilter&&CategorieFilter?.[0]?.categorySlug}`}className="text-sm font-medium text-grey-600">{CategorieFilter&&CategorieFilter?.[0]?.categoryName}</Link>:<>
+                        // <Link href={`/allCategories/${CategorieFilter&&CategorieFilter?.[0]?.categorySlug}`}className="text-sm font-medium text-grey-600">{CategorieFilter&&CategorieFilter?.[0]?.categoryName}</Link>:<>
+                          <Link href={`/allCategories/${CategorieFilter&&CategorieFilter?.[0]?.categorySlug}`}className="text-sm font-medium text-grey-600">{CategorieFilter&&CategorieFilter?.[0]?.categoryName}</Link>:<>
                         <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 shadow animate-pulse"></div>
                         </>}
                         <img src="/img/right-arrow.svg" className="w-2 h-2" />

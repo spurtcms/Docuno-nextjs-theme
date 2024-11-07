@@ -69,7 +69,8 @@ export default function HomepageList({ CategoryList, CategoryEntries }) {
                         response?.filterData.map((result, ind) => (
                           <>
                             {ind < 3 && (
-                              <div className="flex justify-between items-center gap-10 group px-6 py-4 border-gray-100 border-b">
+                                <>
+                               {/* <div className="flex justify-between items-center gap-10 group px-6 py-4 border-gray-100 border-b"> */}
                                 <Link
                                   href={`/categoriesDetails/${result?.slug}`}
                                   onClick={() =>
@@ -77,14 +78,22 @@ export default function HomepageList({ CategoryList, CategoryEntries }) {
                                   }
                                   className="text-gray-300 text-base font-medium group-hover:text-blue-600"
                                 >
+                                  <div className="flex justify-between items-center gap-10 group px-6 py-4 border-gray-100 border-b"> 
                                   {result?.title}
-                                </Link>
-                                <Link
-                                  href={`/categoriesDetails/${result?.slug}`}
-                                >
                                   <img src="img/right-arrow.svg" />
+                                  </div>
                                 </Link>
-                              </div>
+                                {/* <Link
+                                  href={`/categoriesDetails/${result?.slug}`}
+                                  onClick={() =>
+                                    handleRoute(response?.categorySlug)
+                                  }
+                                >
+                                  
+                                </Link> */}
+                                {/* </div> */}
+                                </>
+                              
                             )}
                           </>
                         ))}

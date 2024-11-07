@@ -20,8 +20,10 @@ export const apiinstance=async(url,options)=>{
   
         
       const res = await fetch(`${process.env.NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL}${url}`,config);
+
       if(res.ok){
             return await res.json();
+            console.log(res,"ressss")
         }else{
           res
         }
