@@ -27,15 +27,21 @@ export default async function page({params}) {
   }
   }
 //  let  variable_list={ "limit": 10, "offset": 0,"req": {"authorDetails": true,"categories": true},"categoryId":1}
-let  variable_list={ 
-  "commonFilter": { "offset": 0},
-  "AdditionalData": {
- "authorDetails": true,
- "categories": true
+let  variable_list={
+  "commonFilter": {
+    "limit": 10,
+    "offset": 0,
+    "keyword":""
   },
- "entryFilter": {
-   "categorySlug": defaultCategorySlug,
- },}
+  "entryFilter": {
+    "Status": "Publish",
+    "categorySlug": defaultCategorySlug
+  },
+  "AdditionalData": {
+    "categories": true
+  }
+}
+
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
 

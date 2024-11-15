@@ -17,15 +17,21 @@ export default async function page() {
       "excludeGroup": true,
     }
   }
- let  variable_list={ 
-     "commonFilter": { "offset": 0},
-     "AdditionalData": {
-    "authorDetails": true,
+ let  variable_list={
+  "commonFilter": {
+    "limit": 10,
+    "offset": 0,
+    "keyword":""
+  },
+  "entryFilter": {
+    "Status": "Publish",
+    "categorySlug": defaultCategorySlug
+  },
+  "AdditionalData": {
     "categories": true
-     },
-    "entryFilter": {
-      "categorySlug": defaultCategorySlug,
-    },}
+  }
+}
+
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
   return (

@@ -25,6 +25,26 @@ export default function CategoriesDetails({detailData,CategoryList,params}) {
 //       const [CategoryList,detailData]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug)])
 //     }
 
+
+
+const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+
+    useEffect(() => {
+      if (isScriptLoaded) return;
+      const script = document.createElement('script');
+      script.src = 'https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries';
+      script.defer = true;
+      script.async = true;
+  
+      script.onload = () => setIsScriptLoaded(true); 
+      document.body.appendChild(script);
+  
+      return () => {
+        document.body.removeChild(script);
+      };
+    }, [isScriptLoaded]);
+
+
 useEffect(()=>{
     window.scrollTo(0, 0);
     if(detailData){
@@ -90,7 +110,7 @@ console.log(detailData,"detailData");
                          
                          } */}
 
-                    <div className="text-gray-300 text-lg font-normal desc" dangerouslySetInnerHTML={{__html: detailData?.ChannelEntryDetail?.description.replaceAll("<br>"," "),}}/>
+                    <div className="text-gray-300 text-lg font-normal desc" dangerouslySetInnerHTML={{__html: detailData?.ChannelEntryDetail?.description?.replaceAll("<br>"," "),}}/>
                     </div>
                     </>}
                     <div className="mt-[60px] py-[60px] bg-gray-200 flex justify-center items-center">

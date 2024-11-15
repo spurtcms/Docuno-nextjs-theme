@@ -33,7 +33,9 @@ export default async function page({params}) {
       "memberProfile": false,
       "additionalFields": false,
       "categories": false
-    }}
+    }
+    
+  }
 
       const [CategoryList,detailData]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug)])
 

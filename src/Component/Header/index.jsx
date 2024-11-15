@@ -71,6 +71,7 @@ export default function Header() {
     setRouter(slug)
   }
 
+ 
   return (
     <>
       <header className="bg-white shadow-lg top-0 sticky z-10">

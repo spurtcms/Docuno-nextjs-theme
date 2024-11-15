@@ -23,15 +23,21 @@ export const CategoryListApi = async ()=>{
 
 
 export const CategoryEntriesApi = async ()=>{
-    let  variable_list={ 
-        "commonFilter": {"limit": 10, "offset": 0},
-        "AdditionalData": {
-        "authorDetails": true,
-        "categories": true},
+    let  variable_list={
+        "commonFilter": {
+          "limit": 10,
+          "offset": 0,
+          "keyword":""
+        },
         "entryFilter": {
-         "categorySlug": defaultCategorySlug,
-        },}
-
+          "Status": "Publish",
+          "categorySlug": defaultCategorySlug
+        },
+        "AdditionalData": {
+          "categories": true
+        }
+      }
+      
         let cateEntriesData = await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
         return cateEntriesData
 }

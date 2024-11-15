@@ -76,7 +76,7 @@ export default function FilterJob({ categoryList }) {
         <div className="m-auto flex flex-col gap-4 md:gap-8 pt-0   items-center  justify-center absolute top-0 left-0 w-full h-full">
           <h3 className="text-black-500 text-xl sm:text-[40px] font-semibold">How can we help?</h3>
           <div className="relative">
-            <input type="text" value={change} onChange={(e) => setChange(e.target.value)} className="h-[52px] w-full sm:min-w-[640px] pr-10 rounded-lg shadow-lg px-6 text-base text-black font-medium focus-visible:outline-0" placeholder="Ask a question..." />
+            <input type="text" value={change} onChange={(e) => setChange(e.target.value)} className="h-[52px] w-full sm:min-w-[640px] pr-10 rounded-lg shadow-lg px-6 text-base text-black font-medium focus-visible:outline-0 border-none" placeholder="Ask a question..." />
             <img src="img/search.svg" className="absolute top-4 right-4" />
             {change != "" &&
               <div className='absolute top-full mt-1 bg-white rounded-lg  pt-4 max-h-[272px] overflow-auto w-full shadow-drop z-[5]'>

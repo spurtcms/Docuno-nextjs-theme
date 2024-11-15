@@ -40,6 +40,9 @@ export default function HomepageList({ CategoryList, CategoryEntries }) {
     setRouter(slug);
   };
 
+  
+  
+
   return (
     <>
       <main className="min-h-screen bg-white">
@@ -60,7 +63,7 @@ export default function HomepageList({ CategoryList, CategoryEntries }) {
                           <h6 className="text-2xl text-black font-semibold">
                             {response?.categoryName}
                           </h6>
-                          <p className="text-gray-300 text-sm font-medium">
+                          <p className="text-gray-500 text-sm font-medium">
                             {response?.filterData?.length} articles
                           </p>
                         </div>
@@ -76,7 +79,7 @@ export default function HomepageList({ CategoryList, CategoryEntries }) {
                                   onClick={() =>
                                     handleRoute(response?.categorySlug)
                                   }
-                                  className="text-gray-300 text-base font-medium group-hover:text-blue-600"
+                                  className="text-gray-500 text-base font-medium group hover:text-blue-600"
                                 >
                                   <div className="flex justify-between items-center gap-10 group px-6 py-4 border-gray-100 border-b"> 
                                   {result?.title}
@@ -100,7 +103,7 @@ export default function HomepageList({ CategoryList, CategoryEntries }) {
                       <div className="w-full my-8 flex justify-center absolute bottom-0">
                         <Link
                           href={`/allCategories/${response?.categorySlug}`}
-                          className="flex gap-2 px-6 h-9 items-center justify-center hover:text-white group text-gray-300 text-base font-normal border border-gray-100 hover:border-0 shadow-btn rounded bg-white hover:bg-black"
+                          className="flex gap-2 px-6 h-9 items-center justify-center hover:text-white group text-gray-500 text-base font-normal border border-gray-100 hover:border-0 shadow-btn rounded bg-white hover:bg-black"
                         >
                           Show All
                           <img
