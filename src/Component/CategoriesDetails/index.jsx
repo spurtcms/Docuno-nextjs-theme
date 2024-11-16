@@ -65,6 +65,15 @@ console.log(detailData,"detailData");
 
     console.log(CategorieFilter,"CategorieFilter101");
     console.log(detailData?.ChannelEntryDetail?.categoriesId,"detailDataqqq",CategoryList,routeShow)
+
+
+    const [activeButton, setActiveButton] = useState(null);
+
+    const handleClick = (response) => {
+      setActiveButton(response); // Store the button clicked
+      setTimeout(() => setActiveButton(null), 1000); // Reset after 1 second
+    };
+ 
     
   return (
     <>
@@ -117,9 +126,20 @@ console.log(detailData,"detailData");
                         <div className="flex flex-col gap-8">
                             <h3 className="text-black text-2xl font-semibold">Was this article helpful?</h3>
                             <div className="flex gap-6 items-center justify-center">
-                                <button className="flex items-center justify-center gap-1.5 border-gray-500 border h-11 px-6 rounded text-base font-medium text-black"><img src="/img/thumbs-up.svg" /> yes</button>
-                                <button className="flex items-center justify-center gap-1.5 border-gray-500 border h-11 px-6 rounded text-base font-medium text-black"><img src="/img/thumbs-down.svg" /> no</button>
+
+                                <button   className={`flex items-center justify-center gap-1.5 border-gray-500 border h-11 px-6 rounded text-base font-medium text-black ${activeButton === 'yes' ? 'bg-black text-white' : ''}`}
+                                onClick={() => handleClick('yes')}><img src="/img/thumbs-up.svg"
+                                alt="thumbs up"
+                                className={`${activeButton === 'yes' ? 'filter invert' : ''}`} /> yes</button>
+
+        
+                                <button className={`flex items-center justify-center gap-1.5 border-gray-500 border h-11 px-6 rounded text-base font-medium text-black ${activeButton === 'no' ? 'bg-black text-white' : ''}`}
+                                onClick={() => handleClick('no')}><img src="/img/thumbs-down.svg"
+                                alt="thumbs down"
+                                className={`${activeButton === 'no' ? 'filter invert' : ''}`} /> no</button> 
+                                
                             </div>
+
                         </div>
                     </div> 
                 </div>
