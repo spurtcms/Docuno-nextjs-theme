@@ -98,7 +98,7 @@ console.log(detailData,"detailData");
                     {loader?<><DetailPageSkeleton /></>
                     :<>
                     <div className="flex flex-col gap-6 mb-10">
-                        <h2 className="text-[40px] font-semibold text-black">{detailData?.ChannelEntryDetail?.title}</h2>
+                        {/* <h2 className="text-[40px] font-semibold text-black">{detailData?.ChannelEntryDetail?.title}</h2> */}
                         {/* <p className="text-gray-300 text-lg font-normal">
                             Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time. Help Center is your own, publicly accessible Knowledge Base where your customers can find answers to their questions. It supports the other customer service channels you use and improves the average chat resolution time.
                         </p> */}
@@ -119,7 +119,7 @@ console.log(detailData,"detailData");
                          
                          } */}
 
-                    <div className="text-gray-300 text-lg font-normal desc" dangerouslySetInnerHTML={{__html: detailData?.ChannelEntryDetail?.description?.replaceAll("<br>"," "),}}/>
+                    <div className="" dangerouslySetInnerHTML={{__html: detailData?.ChannelEntryDetail?.description?.replaceAll("<br>"," ").replace(/p-\[24px_60px_10px\]/g, "")}}/>
                     </div>
                     </>}
                     <div className="mt-[60px] py-[60px] bg-gray-200 flex justify-center items-center">

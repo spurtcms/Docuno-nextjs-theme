@@ -6,6 +6,8 @@ import HomePageSkeleton from "../SkeletonLoader/HomePageSkeleton";
 import { setRouter } from "@/app/api/serverAction";
 
 export default function HomepageList({ CategoryList, CategoryEntries }) {
+
+
   const [categoryList, setCategoryList] = useState();
   const [categoryEntries, setCategoryEntries] = useState(CategoryEntries);
   const [loader, setLoader] = useState(true);

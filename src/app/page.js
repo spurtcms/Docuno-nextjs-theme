@@ -9,7 +9,7 @@ export default async function page() {
   let variable_category={
     
     "commonFilter": {
-    "limit":50,
+    "limit":10,
     "offset":0},
     "categoryFilter": {
       // "hierarchyLevel": 2,
@@ -34,6 +34,10 @@ export default async function page() {
 
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
+  
+  console.log(CategoryList,"CategoryList")
+  console.log(CategoryEntries,"CategoryEntries")
+
   return (
     <>
       <HomepageList CategoryList={CategoryList} CategoryEntries={CategoryEntries}/>
