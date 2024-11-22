@@ -4,7 +4,7 @@
 
 Welcome to Knowledge base template, your central hub for all the information, guides, and resources you need to succeed. This knowledge base is designed to provide clear, concise, and actionable content to help you navigate specific subject, product, or service.
 
-This template can be used to create a simple documentation template that uses Next.js App Router for the frontend and [spurtcms][https://dev.spurtcms.com] to handle its content. It comes with a native spurtcms that offers features like real-time collaboration and visual editing with live updates using [https://dev.spurtcms.com/documentation].
+This template can be used to create a simple documentation template that uses Next.js App Router for the frontend and [spurtcms](https://dev.spurtcms.com) to handle its content. It comes with a native spurtcms that offers features like real-time collaboration and visual editing with live updates.Check out the [project documentaion](https://dev.spurtcms.com/documentation) for more details.
 
 The Studio connects to spurtcms, which gives you hosted content APIs with a flexible query language, on-demand image transformations, powerful patching, and more. You can use this starter to kick-start a blog or learn these technologies.
 
@@ -39,12 +39,16 @@ Use the Deploy Button below, you'll deploy the example using
 ## Set up environment variables
 
 Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. 
+
+```bash
+NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL="https://your-graphql-endpoint-url"
+```
  
 ## Step 1. Steps to get API Key
  
  Before starting our Next JS blog template we need to go inside our spurtCMS Admin and get the default token that we will be using for displaying our content.
 
-1.Inside your spurtCMS Admin Panel [spurtcms][https://dev.spurtcms.com/] navigate to API Keys.
+1.Inside your spurtCMS Admin Panel [spurtcms](https://dev.spurtcms.com) navigate to API Keys.
 
 ![API Key 1 (1)](https://github.com/user-attachments/assets/b3806e8f-1dcd-4f75-88fe-8366b3036d47)
 
@@ -64,9 +68,6 @@ Once you have your token add it to your env and it should look like this:
 
 
 
-```bash
-NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL=""
-```
 
 ```bash
 NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_TOKEN="your-api-token"
