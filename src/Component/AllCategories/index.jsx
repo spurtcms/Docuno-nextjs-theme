@@ -59,6 +59,7 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
   // })
 
   const handleRoute=(slug)=>{
+    // console.log(slug,"slugnnn");
     setRouter(slug)
   }
 
