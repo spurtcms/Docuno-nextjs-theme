@@ -23,10 +23,6 @@ The Studio connects to spurtcms, which gives you hosted content APIs with a flex
 
 
 
-## Demo
-
-
-### [https://knowledge-base-lyart-one.vercel.app/](knowledge-base-lyart-one.vercel.app/)
 
 
 
