@@ -9,7 +9,6 @@ import React from 'react'
 
 export default async function page({params}) {
 
-  console.log(params,"paramssss")
 
   // let variable_category={
   //   "categoryGroupId": 1,
@@ -46,12 +45,9 @@ let  variable_list={
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
   
-  console.log(CategoryList,"CategoryList1010")
-  console.log(CategoryEntries,"CategoryEntries12121")
 
   const filteredData = CategoryList?.CategoryList?.categorylist.filter(d => d?.categorySlug === params?.slug)
 
-  console.log(filteredData,"filteredData565656")
   if (filteredData?.length==0) {
     return PageNotFound();
   }

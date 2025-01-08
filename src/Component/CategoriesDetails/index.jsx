@@ -6,12 +6,10 @@ import { getRouter } from '@/app/api/serverAction';
 
 export default function CategoriesDetails({detailData,CategoryList,params}) {
 
-    console.log(CategoryList,"CategorieFilter101789");
     
     const [loader,setLoader]=useState(true)
     const [routeShow,setRouteShow]=useState("")
 
-    console.log(routeShow,"routeShowwww");
 
 // const testCallApi=async()=>{
 //     let variable_category={
@@ -58,13 +56,10 @@ useEffect(()=>{
 },[])
 
 
-console.log(detailData,"detailData");
 
     const CategorieFilter=CategoryList?.CategoryList?.categorylist?.filter(d=>(detailData?.ChannelEntryDetail?.categoriesId.toString().includes(d?.id.toString()) && (d?.categorySlug == routeShow && routeShow)))
 
 
-    console.log(CategorieFilter,"CategorieFilter101");
-    console.log(detailData?.ChannelEntryDetail?.categoriesId,"detailDataqqq",CategoryList,routeShow)
 
 
     const [activeButton, setActiveButton] = useState(null);

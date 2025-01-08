@@ -35,8 +35,6 @@ export default async function page() {
 
   const [CategoryList,CategoryEntries]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
   
-  console.log(CategoryList,"CategoryList")
-  console.log(CategoryEntries,"CategoryEntries")
 
   return (
     <>

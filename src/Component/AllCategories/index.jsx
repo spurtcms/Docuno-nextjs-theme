@@ -6,7 +6,6 @@ import NodataImg from '../NodataImg';
 
 export default function AllCategories({CategoryList,CategoryEntries,params}) {
 
-  console.log(params,"paramsmmmm");
 
   const [categoryList,setCategoryList]=useState()
   const [categoryEntries,setCategoryEntries]=useState(CategoryEntries)
@@ -59,7 +58,6 @@ export default function AllCategories({CategoryList,CategoryEntries,params}) {
   // })
 
   const handleRoute=(slug)=>{
-    // console.log(slug,"slugnnn");
     setRouter(slug)
   }
 
