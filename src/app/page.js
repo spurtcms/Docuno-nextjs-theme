@@ -19,7 +19,7 @@ export default async function page() {
   }
  let  variable_list={
   "commonFilter": {
-    "limit": 10,
+    // "limit": 10,
     "offset": 0,
     "keyword":""
   },

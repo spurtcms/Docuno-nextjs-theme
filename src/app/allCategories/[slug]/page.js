@@ -29,7 +29,7 @@ export default async function page({params}) {
 //  let  variable_list={ "limit": 10, "offset": 0,"req": {"authorDetails": true,"categories": true},"categoryId":1}
 let  variable_list={
   "commonFilter": {
-    "limit": 10,
+    // "limit": 10,
     "offset": 0,
     "keyword":""
   },
