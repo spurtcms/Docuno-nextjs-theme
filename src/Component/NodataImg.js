@@ -7,6 +7,7 @@ export default function NodataImg() {
     <div className=" px-5 lg:px-20  py-32 col-span-full grid place-items-center nodata">
                 <div className="flex flex-col items-center max-w-[408px] ">
                     {/* <img src="\img\noData.svg" alt="nodata" className="dark:hidden" /> */}
+                    
                     <img
                         src="/img/nodatafilter.svg"
                         alt="nodata"
