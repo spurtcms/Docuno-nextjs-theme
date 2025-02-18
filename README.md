@@ -4,7 +4,7 @@
 
 Welcome to Knowledge base template, your central hub for all the information, guides, and resources you need to succeed. This knowledge base is designed to provide clear, concise, and actionable content to help you navigate specific subject, product, or service.
 
-This template can be used to create a simple documentation template that uses Next.js App Router for the frontend and [spurtcms](https://dev.spurtcms.com) to handle its content. It comes with a native spurtcms that offers features like real-time collaboration and visual editing with live updates.Check out the [project documentaion](https://dev.spurtcms.com/documentation) for more details.
+This template can be used to create a simple documentation template that uses Next.js App Router for the frontend and [spurtcms](https://spurtcms.com) to handle its content. It comes with a native spurtcms that offers features like real-time collaboration and visual editing with live updates.Check out the [project documentaion](https://www.spurtcms.com/documentation/) for more details.
 
 The Studio connects to spurtcms, which gives you hosted content APIs with a flexible query language, on-demand image transformations, powerful patching, and more. You can use this starter to kick-start a blog or learn these technologies.
 
